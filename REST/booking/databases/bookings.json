@@ -1,7 +1,7 @@
 {
   "bookings": [
     {
-      "userid": "chris_rivers",
+      "user_id": "chris_rivers",
       "dates": [
         {
           "date": "20151201",
@@ -10,7 +10,7 @@
       ]
     },
     {
-      "userid": "garret_heaton",
+      "user_id": "garret_heaton",
       "dates": [
         {
           "date": "20151201",
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "userid": "dwight_schrute",
+      "user_id": "dwight_schrute",
       "dates": [
         {
           "date": "20151201",
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "userid": "aurore_kerlero",
+      "user_id": "aurore_kerlero",
       "dates": []
     }
   ]

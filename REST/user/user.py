@@ -43,9 +43,9 @@ def get_users():
 @app.route("/user/<string:id>", methods=["GET"])
 def get_user(id: str):
     """
-    We use url query parameters and request body parameters just to show of the different ways to pass data
+    We use url parameters and request body parameters just to show of the different ways to pass data
     It's not a good idea to use both in the same app, but we're here to graduate, not to make a good app
-    Either way, this is a GET request with query parameters
+    Either way, this is a GET request with url parameters
     """
     for user in users:
         if user["id"] == id:
@@ -88,10 +88,11 @@ def add_user():
     return make_response(jsonify(user), 201)
 
 
-@app.route("/bookings", methods=["GET"])
+@app.route("/bookings", methods=["POST"])
 def get_bookings():
     """
-    This is a GET request with a request body
+    This is a POST request with a request body, since GET requests shouldn't have a body
+    Even if we are not posting anything, we're still need to use a POST request
 
     We retrieve all the bookings for the user from the booking service
     """
@@ -121,6 +122,9 @@ def get_bookings():
     )
     res = requests.get(url)
 
+    if res.status_code == 404:
+        return make_response(jsonify({"error": "No bookings for that user"}), 404)
+
     if res.status_code >= 400:
         return make_response(jsonify({"error": "Error retrieving bookings"}), 400)
 
@@ -131,7 +135,7 @@ def get_bookings():
 @app.route("/movies/<string:id>", methods=["GET"])
 def get_movies_info(id: str):
     """
-    This is a GET request with query parameters
+    This is a GET request with url parameters
 
     First, we check if the user exists
     Then, we retrieve the bookings for that user
