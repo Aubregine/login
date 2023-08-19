@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pipenv = "*"
+flask = "*"
+requests = "*"
 
 [dev-packages]
 
