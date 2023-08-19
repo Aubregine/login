@@ -26,7 +26,7 @@ def home():
     We're not using any framework for the frontend, so we're just rendering a template
     Every page has its own template, so we're not using any template inheritance, nor any template engine
     """
-    return make_response(render_template("home/home.html"), 200)
+    return make_response(render_template("home.html"), 200)
 
 
 @app.route("/users", methods=["GET"])
