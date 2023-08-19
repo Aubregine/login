@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My Website</title>
+        <style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0px 20px 0px 20px;
+    align-items: center;
+    height: 50px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.link {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.link:hover {
+    color: #ccc;
+}
+
+.block {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 10px 0px #00000066;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+        </style>
+    </head>
+    <body>
+        <main>
+            <nav class="navbar">
+                <a class="link" href="#">User</a>
+                <a class="link" href="http://127.0.0.1:3201/">Booking</a>
+                <a class="link" href="http://127.0.0.1:3200/">Movie</a>
+                <a class="link" href="http://127.0.0.1:3202/">Showtime</a>
+            </nav>
+            <div class="block">
+                <div class="title">Add a user to the database</div>
+                <form id="add_user">
+                    <input type="text" name="last_name" placeholder="Last name">
+                    <input type="text" name="first_name"
+                        placeholder="First name">
+                    <button type="submit" class="button" href="#">Add new user</button>
+                </form>
+            </div>
+            <div class="block">
+                <div class="title">Get user infos</div>
+                <form id="get_user">
+                    <input type="text" name="name" placeholder="User name">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button" href="#">Get user infos</button>
+                </form>
+            </div>
+            <div class="block">
+                <div class="title">Get user bookings</div>
+                <form id="get_user_bookings">
+                    <input type="text" name="name" placeholder="User name">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button" href="#">Get user
+                        bookings</button>
+                </form>
+            </div>
+            <div class="block">
+                <div class="title">Get user movies</div>
+                <form id="get_user_movies">
+                    <input type="text" name="name" placeholder="User name">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button" href="#">Get user
+                        movies</button>
+                </form>
+            </div>
+        </main>
+        <script>
+            const add_user = document.getElementById('add_user');
+
+            add_user.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const last_name = add_user.last_name.value;
+                const first_name = add_user.first_name.value;
+
+                const full_name = first_name + ' ' + last_name;
+                const id = (first_name.trim() + '_' + last_name.trim()).toLocaleLowerCase().replaceAll(' ', '_');
+                const data = {
+                    name: full_name,
+                    id: id,
+                };
+                // post request to the server
+                fetch('/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data),
+                });
+                // clear the form
+                add_user.last_name.value = '';
+                add_user.first_name.value = '';
+            });
+
+        </script>
+    </body>
+</html>
