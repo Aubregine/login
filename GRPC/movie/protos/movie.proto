@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+service Movies {
+    rpc GetMovies(Empty) returns (stream Movie) {}
+    rpc GetMovieByID(MovieID) returns (Movie) {}
+    rpc GetMovieByTitle(MovieTitle) returns (Movie) {}
+    rpc AddMovie(Movie) returns (Response) {}
+    rpc DeleteMovie(MovieID) returns (Response) {}
+}
+
+message Movie {
+    string title = 1;
+    float rating = 2;
+    string director = 3;
+    string id = 4;
+}
+
+message MovieID {
+    string id = 1;
+}
+
+message MovieTitle {
+    string title = 1;
+}
+
+message Empty {
+}
+
+message Response {
+    string message = 1;
+}
