@@ -14,14 +14,14 @@ BOOKING_PORT = 3201
 MOVIE_PORT = 3200
 
 
-class UserServicer(user_pb2_grpc.UserServicer):
+class UserServicer(user_pb2_grpc.UsersServicer):
     def __init__(self):
         with open("./databases/users.json", "r") as f:
-            self.users: list = json.load(f)
+            self.users: list = json.load(f)["users"]
 
     def GetUsers(self, request, context):
         for user in self.users:
-            yield user_pb2.User(
+            yield user_pb2.uUser(
                 id=user["id"],
                 name=user["name"],
                 last_active=user["last_active"],
@@ -30,7 +30,7 @@ class UserServicer(user_pb2_grpc.UserServicer):
     def GetUserByID(self, request, context):
         for user in self.users:
             if user["id"] == request.id:
-                return user_pb2.User(
+                return user_pb2.uUser(
                     id=user["id"],
                     name=user["name"],
                     last_active=user["last_active"],
@@ -55,7 +55,7 @@ class UserServicer(user_pb2_grpc.UserServicer):
         # Write to file
         with open("./databases/users.json", "w") as f:
             json.dump(self.users, f, indent=2)
-        return user_pb2.Response(
+        return user_pb2.uResponse(
             message="User added successfully",
             success=True,
         )
@@ -103,7 +103,7 @@ class UserServicer(user_pb2_grpc.UserServicer):
                         with grpc.insecure_channel(
                             f"localhost:{MOVIE_PORT}"
                         ) as channel:
-                            stub = booking_pb2_grpc.BookingsStub(channel)
+                            stub = movie_pb2_grpc.MoviesStub(channel)
                             movie = stub.GetMovie(movie_pb2.MovieID(id=movie_id))
                             movies.append(movie)
                     except grpc.RpcError as e:
@@ -112,7 +112,7 @@ class UserServicer(user_pb2_grpc.UserServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    user_pb2_grpc.add_UserServicer_to_server(UserServicer(), server)
+    user_pb2_grpc.add_UsersServicer_to_server(UserServicer(), server)
     server.add_insecure_port(f"[::]:{PORT}")
     server.start()
     server.wait_for_termination()

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My Website</title>
+        <style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0px 20px 0px 20px;
+    align-items: center;
+    height: 50px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+
+.link {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.link:hover {
+    color: #ccc;
+}
+
+.block {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 10px 0px #00000066;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+        </style>
+    </head>
+    <body>
+        <main>
+            <nav class="navbar">
+                <a id="user_link" class="link" href="#">User</a>
+                <a class="link" href="http://127.0.0.1:3201/">Booking</a>
+                <a class="link" href="http://127.0.0.1:3200/">Movie</a>
+                <a class="link" href="http://127.0.0.1:3202/">Showtime</a>
+            </nav>
+            <div class="block">
+                <div class="title">Add a user to the database</div>
+                <form id="add_user">
+                    <input type="text" name="first_name"
+                        placeholder="First name">
+                    <input type="text" name="last_name" placeholder="Last name">
+                    <button type="submit" class="button">Add new user</button>
+                </form>
+            </div>
+            <div class="block">
+                <div class="title">Get user infos</div>
+                <form id="get_user">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button">Get user infos by id</button>
+                </form>
+                <pre class="response" id="get_user_response"></pre>
+            </div>
+            <div class="block">
+                <div class="title">Get user bookings</div>
+                <form id="get_user_bookings">
+                    <input type="text" name="name" placeholder="User name">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button">Get user
+                        bookings</button>
+                </form>
+                <pre class="response" id="get_user_bookings_response"></pre>
+            </div>
+            <div class="block">
+                <div class="title">Get user movies</div>
+                <form id="get_user_movies">
+                    <input type="text" name="id" placeholder="User id">
+                    <button type="submit" class="button">Get user
+                        movies</button>
+                    <pre class="response" id="get_user_movies_response"></pre>
+                </form>
+            </div>
+            <div class="block">
+                <div class="title">Get all users</div>
+                <button id="get_all_users" class="button">Get all users</button>
+                <pre class="response" id="get_all_users_response"></pre>
+            </div>
+        </main>
+        <script>
+            const user_link = document.getElementById('user_link');
+            const add_user = document.getElementById('add_user');
+            const get_user = document.getElementById('get_user');
+            const get_user_bookings = document.getElementById('get_user_bookings');
+            const get_user_movies = document.getElementById('get_user_movies');
+            const get_all_users = document.getElementById('get_all_users');
+
+            user_link.addEventListener('click', (e) => {
+                // clear all responses
+                const responses = document.getElementsByClassName('response');
+                for (let i = 0; i < responses.length; i++) {
+                    responses[i].innerHTML = '';
+                }
+            });
+
+            add_user.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const last_name = add_user.last_name.value;
+                const first_name = add_user.first_name.value;
+
+                const full_name = first_name + ' ' + last_name;
+                const id = (first_name.trim() + '_' + last_name.trim()).toLocaleLowerCase().replaceAll(' ', '_');
+                const data = {
+                    name: full_name,
+                    id: id,
+                };
+                // post request to the server
+                fetch('/user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data),
+                });
+                // clear the form
+                add_user.last_name.value = '';
+                add_user.first_name.value = '';
+            });
+
+            get_user.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = get_user.id.value;
+                // clear the form
+                get_user.id.value = '';
+                // show the data
+                fetch('/user/' + encodeURIComponent(id)).then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    const response = document.getElementById('get_user_response');
+                    response.innerHTML = JSON.stringify(data, null, 2);
+                });
+            });
+
+            get_user_bookings.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = get_user_bookings.id.value;
+                const name = get_user_bookings.name.value;
+                // fetch the user bookings using body parameters
+                fetch('/bookings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        name: name,
+                    }),
+                }).then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    // show the data
+                    const response = document.getElementById('get_user_bookings_response');
+                    response.innerHTML = JSON.stringify(data, null, 2);
+                });
+                // clear the form
+                get_user_bookings.id.value = '';
+                get_user_bookings.name.value = '';
+            });
+
+            get_user_movies.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const id = get_user_movies.id.value;
+                // fetch the user movies using query parameters
+                fetch('/movies/' + encodeURIComponent(id)).then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    // show the data
+                    const response = document.getElementById('get_user_movies_response');
+                    response.innerHTML = JSON.stringify(data, null, 2);
+                });
+                // clear the form
+                get_user_movies.id.value = '';
+            });
+
+            get_all_users.addEventListener('click', (e) => {
+                // fetch all users
+                fetch('/users').then((res) => {
+                    return res.json();
+                }).then((data) => {
+                    // show the data
+                    const response = document.getElementById('get_all_users_response');
+                    response.innerHTML = JSON.stringify(data, null, 2);
+                });
+            });
+
+        </script>
+    </body>
+</html>

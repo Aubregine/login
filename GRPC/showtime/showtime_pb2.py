@@ -14,54 +14,54 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eshowtime.proto\"\x14\n\x04\x44\x61te\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\"(\n\x08Showtime\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x07\n\x05\x45mpty2\x82\x01\n\tShowtimes\x12%\n\x0cGetShowtimes\x12\x06.Empty\x1a\t.Showtime\"\x00\x30\x01\x12\'\n\x11GetShowtimeByDate\x12\x05.Date\x1a\t.Showtime\"\x00\x12%\n\x0b\x41\x64\x64Showtime\x12\t.Showtime\x1a\t.Response\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eshowtime.proto\"\x15\n\x05sDate\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\")\n\tsShowtime\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t\"\x1c\n\tsResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x08\n\x06sEmpty2\x88\x01\n\tShowtimes\x12\'\n\x0cGetShowtimes\x12\x07.sEmpty\x1a\n.sShowtime\"\x00\x30\x01\x12)\n\x11GetShowtimeByDate\x12\x06.sDate\x1a\n.sShowtime\"\x00\x12\'\n\x0b\x41\x64\x64Showtime\x12\n.sShowtime\x1a\n.sResponse\"\x00\x62\x06proto3')
 
 
 
-_DATE = DESCRIPTOR.message_types_by_name['Date']
-_SHOWTIME = DESCRIPTOR.message_types_by_name['Showtime']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
-Date = _reflection.GeneratedProtocolMessageType('Date', (_message.Message,), {
-  'DESCRIPTOR' : _DATE,
+_SDATE = DESCRIPTOR.message_types_by_name['sDate']
+_SSHOWTIME = DESCRIPTOR.message_types_by_name['sShowtime']
+_SRESPONSE = DESCRIPTOR.message_types_by_name['sResponse']
+_SEMPTY = DESCRIPTOR.message_types_by_name['sEmpty']
+sDate = _reflection.GeneratedProtocolMessageType('sDate', (_message.Message,), {
+  'DESCRIPTOR' : _SDATE,
   '__module__' : 'showtime_pb2'
-  # @@protoc_insertion_point(class_scope:Date)
+  # @@protoc_insertion_point(class_scope:sDate)
   })
-_sym_db.RegisterMessage(Date)
+_sym_db.RegisterMessage(sDate)
 
-Showtime = _reflection.GeneratedProtocolMessageType('Showtime', (_message.Message,), {
-  'DESCRIPTOR' : _SHOWTIME,
+sShowtime = _reflection.GeneratedProtocolMessageType('sShowtime', (_message.Message,), {
+  'DESCRIPTOR' : _SSHOWTIME,
   '__module__' : 'showtime_pb2'
-  # @@protoc_insertion_point(class_scope:Showtime)
+  # @@protoc_insertion_point(class_scope:sShowtime)
   })
-_sym_db.RegisterMessage(Showtime)
+_sym_db.RegisterMessage(sShowtime)
 
-Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
-  'DESCRIPTOR' : _RESPONSE,
+sResponse = _reflection.GeneratedProtocolMessageType('sResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SRESPONSE,
   '__module__' : 'showtime_pb2'
-  # @@protoc_insertion_point(class_scope:Response)
+  # @@protoc_insertion_point(class_scope:sResponse)
   })
-_sym_db.RegisterMessage(Response)
+_sym_db.RegisterMessage(sResponse)
 
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
+sEmpty = _reflection.GeneratedProtocolMessageType('sEmpty', (_message.Message,), {
+  'DESCRIPTOR' : _SEMPTY,
   '__module__' : 'showtime_pb2'
-  # @@protoc_insertion_point(class_scope:Empty)
+  # @@protoc_insertion_point(class_scope:sEmpty)
   })
-_sym_db.RegisterMessage(Empty)
+_sym_db.RegisterMessage(sEmpty)
 
 _SHOWTIMES = DESCRIPTOR.services_by_name['Showtimes']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _DATE._serialized_start=18
-  _DATE._serialized_end=38
-  _SHOWTIME._serialized_start=40
-  _SHOWTIME._serialized_end=80
-  _RESPONSE._serialized_start=82
-  _RESPONSE._serialized_end=109
-  _EMPTY._serialized_start=111
-  _EMPTY._serialized_end=118
-  _SHOWTIMES._serialized_start=121
-  _SHOWTIMES._serialized_end=251
+  _SDATE._serialized_start=18
+  _SDATE._serialized_end=39
+  _SSHOWTIME._serialized_start=41
+  _SSHOWTIME._serialized_end=82
+  _SRESPONSE._serialized_start=84
+  _SRESPONSE._serialized_end=112
+  _SEMPTY._serialized_start=114
+  _SEMPTY._serialized_end=122
+  _SHOWTIMES._serialized_start=125
+  _SHOWTIMES._serialized_end=261
 # @@protoc_insertion_point(module_scope)

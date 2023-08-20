@@ -8,6 +8,8 @@ pipenv = "*"
 flask = "*"
 requests = "*"
 grpcio = "*"
+google = "*"
+protobuf = "*"
 
 [dev-packages]
 

@@ -16,18 +16,18 @@ class ShowtimesStub(object):
         """
         self.GetShowtimes = channel.unary_stream(
                 '/Showtimes/GetShowtimes',
-                request_serializer=showtime__pb2.Empty.SerializeToString,
-                response_deserializer=showtime__pb2.Showtime.FromString,
+                request_serializer=showtime__pb2.sEmpty.SerializeToString,
+                response_deserializer=showtime__pb2.sShowtime.FromString,
                 )
         self.GetShowtimeByDate = channel.unary_unary(
                 '/Showtimes/GetShowtimeByDate',
-                request_serializer=showtime__pb2.Date.SerializeToString,
-                response_deserializer=showtime__pb2.Showtime.FromString,
+                request_serializer=showtime__pb2.sDate.SerializeToString,
+                response_deserializer=showtime__pb2.sShowtime.FromString,
                 )
         self.AddShowtime = channel.unary_unary(
                 '/Showtimes/AddShowtime',
-                request_serializer=showtime__pb2.Showtime.SerializeToString,
-                response_deserializer=showtime__pb2.Response.FromString,
+                request_serializer=showtime__pb2.sShowtime.SerializeToString,
+                response_deserializer=showtime__pb2.sResponse.FromString,
                 )
 
 
@@ -57,18 +57,18 @@ def add_ShowtimesServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetShowtimes': grpc.unary_stream_rpc_method_handler(
                     servicer.GetShowtimes,
-                    request_deserializer=showtime__pb2.Empty.FromString,
-                    response_serializer=showtime__pb2.Showtime.SerializeToString,
+                    request_deserializer=showtime__pb2.sEmpty.FromString,
+                    response_serializer=showtime__pb2.sShowtime.SerializeToString,
             ),
             'GetShowtimeByDate': grpc.unary_unary_rpc_method_handler(
                     servicer.GetShowtimeByDate,
-                    request_deserializer=showtime__pb2.Date.FromString,
-                    response_serializer=showtime__pb2.Showtime.SerializeToString,
+                    request_deserializer=showtime__pb2.sDate.FromString,
+                    response_serializer=showtime__pb2.sShowtime.SerializeToString,
             ),
             'AddShowtime': grpc.unary_unary_rpc_method_handler(
                     servicer.AddShowtime,
-                    request_deserializer=showtime__pb2.Showtime.FromString,
-                    response_serializer=showtime__pb2.Response.SerializeToString,
+                    request_deserializer=showtime__pb2.sShowtime.FromString,
+                    response_serializer=showtime__pb2.sResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -92,8 +92,8 @@ class Showtimes(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/Showtimes/GetShowtimes',
-            showtime__pb2.Empty.SerializeToString,
-            showtime__pb2.Showtime.FromString,
+            showtime__pb2.sEmpty.SerializeToString,
+            showtime__pb2.sShowtime.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -109,8 +109,8 @@ class Showtimes(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Showtimes/GetShowtimeByDate',
-            showtime__pb2.Date.SerializeToString,
-            showtime__pb2.Showtime.FromString,
+            showtime__pb2.sDate.SerializeToString,
+            showtime__pb2.sShowtime.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -126,7 +126,7 @@ class Showtimes(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Showtimes/AddShowtime',
-            showtime__pb2.Showtime.SerializeToString,
-            showtime__pb2.Response.FromString,
+            showtime__pb2.sShowtime.SerializeToString,
+            showtime__pb2.sResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

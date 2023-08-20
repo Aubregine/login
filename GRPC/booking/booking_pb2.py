@@ -14,64 +14,64 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rbooking.proto\"\x07\n\x05\x45mpty\"\x14\n\x06UserID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t\"/\n\x07\x42ooking\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x14\n\x05\x64\x61tes\x18\x02 \x03(\x0b\x32\x05.Date\"$\n\x04\x44\x61te\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t2\x85\x01\n\x08\x42ookings\x12#\n\x0bGetBookings\x12\x06.Empty\x1a\x08.Booking\"\x00\x30\x01\x12(\n\x11GetBookingForUser\x12\x07.UserID\x1a\x08.Booking\"\x00\x12*\n\x11\x41\x64\x64\x42ookingForUser\x12\x08.Booking\x1a\t.Response\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rbooking.proto\"\x08\n\x06\x62\x45mpty\"\x15\n\x07\x62UserID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1c\n\tbResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"1\n\x08\x62\x42ooking\x12\x0e\n\x06userId\x18\x01 \x01(\t\x12\x15\n\x05\x64\x61tes\x18\x02 \x03(\x0b\x32\x06.bDate\"%\n\x05\x62\x44\x61te\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t2\x8b\x01\n\x08\x42ookings\x12%\n\x0bGetBookings\x12\x07.bEmpty\x1a\t.bBooking\"\x00\x30\x01\x12*\n\x11GetBookingForUser\x12\x08.bUserID\x1a\t.bBooking\"\x00\x12,\n\x11\x41\x64\x64\x42ookingForUser\x12\t.bBooking\x1a\n.bResponse\"\x00\x62\x06proto3')
 
 
 
-_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
-_USERID = DESCRIPTOR.message_types_by_name['UserID']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-_BOOKING = DESCRIPTOR.message_types_by_name['Booking']
-_DATE = DESCRIPTOR.message_types_by_name['Date']
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
+_BEMPTY = DESCRIPTOR.message_types_by_name['bEmpty']
+_BUSERID = DESCRIPTOR.message_types_by_name['bUserID']
+_BRESPONSE = DESCRIPTOR.message_types_by_name['bResponse']
+_BBOOKING = DESCRIPTOR.message_types_by_name['bBooking']
+_BDATE = DESCRIPTOR.message_types_by_name['bDate']
+bEmpty = _reflection.GeneratedProtocolMessageType('bEmpty', (_message.Message,), {
+  'DESCRIPTOR' : _BEMPTY,
   '__module__' : 'booking_pb2'
-  # @@protoc_insertion_point(class_scope:Empty)
+  # @@protoc_insertion_point(class_scope:bEmpty)
   })
-_sym_db.RegisterMessage(Empty)
+_sym_db.RegisterMessage(bEmpty)
 
-UserID = _reflection.GeneratedProtocolMessageType('UserID', (_message.Message,), {
-  'DESCRIPTOR' : _USERID,
+bUserID = _reflection.GeneratedProtocolMessageType('bUserID', (_message.Message,), {
+  'DESCRIPTOR' : _BUSERID,
   '__module__' : 'booking_pb2'
-  # @@protoc_insertion_point(class_scope:UserID)
+  # @@protoc_insertion_point(class_scope:bUserID)
   })
-_sym_db.RegisterMessage(UserID)
+_sym_db.RegisterMessage(bUserID)
 
-Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
-  'DESCRIPTOR' : _RESPONSE,
+bResponse = _reflection.GeneratedProtocolMessageType('bResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BRESPONSE,
   '__module__' : 'booking_pb2'
-  # @@protoc_insertion_point(class_scope:Response)
+  # @@protoc_insertion_point(class_scope:bResponse)
   })
-_sym_db.RegisterMessage(Response)
+_sym_db.RegisterMessage(bResponse)
 
-Booking = _reflection.GeneratedProtocolMessageType('Booking', (_message.Message,), {
-  'DESCRIPTOR' : _BOOKING,
+bBooking = _reflection.GeneratedProtocolMessageType('bBooking', (_message.Message,), {
+  'DESCRIPTOR' : _BBOOKING,
   '__module__' : 'booking_pb2'
-  # @@protoc_insertion_point(class_scope:Booking)
+  # @@protoc_insertion_point(class_scope:bBooking)
   })
-_sym_db.RegisterMessage(Booking)
+_sym_db.RegisterMessage(bBooking)
 
-Date = _reflection.GeneratedProtocolMessageType('Date', (_message.Message,), {
-  'DESCRIPTOR' : _DATE,
+bDate = _reflection.GeneratedProtocolMessageType('bDate', (_message.Message,), {
+  'DESCRIPTOR' : _BDATE,
   '__module__' : 'booking_pb2'
-  # @@protoc_insertion_point(class_scope:Date)
+  # @@protoc_insertion_point(class_scope:bDate)
   })
-_sym_db.RegisterMessage(Date)
+_sym_db.RegisterMessage(bDate)
 
 _BOOKINGS = DESCRIPTOR.services_by_name['Bookings']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _EMPTY._serialized_start=17
-  _EMPTY._serialized_end=24
-  _USERID._serialized_start=26
-  _USERID._serialized_end=46
-  _RESPONSE._serialized_start=48
-  _RESPONSE._serialized_end=75
-  _BOOKING._serialized_start=77
-  _BOOKING._serialized_end=124
-  _DATE._serialized_start=126
-  _DATE._serialized_end=162
-  _BOOKINGS._serialized_start=165
-  _BOOKINGS._serialized_end=298
+  _BEMPTY._serialized_start=17
+  _BEMPTY._serialized_end=25
+  _BUSERID._serialized_start=27
+  _BUSERID._serialized_end=48
+  _BRESPONSE._serialized_start=50
+  _BRESPONSE._serialized_end=78
+  _BBOOKING._serialized_start=80
+  _BBOOKING._serialized_end=129
+  _BDATE._serialized_start=131
+  _BDATE._serialized_end=168
+  _BOOKINGS._serialized_start=171
+  _BOOKINGS._serialized_end=310
 # @@protoc_insertion_point(module_scope)

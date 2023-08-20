@@ -1,48 +1,48 @@
 syntax = "proto3";
 
 service Users {
-    rpc GetUsers(Empty) returns (stream User) {}
-    rpc GetUserByID(UserID) returns (User) {}
-    rpc AddUser(ProtoUser) returns (Response) {}
-    rpc GetBookingForUser(UserID) returns (Booking) {}
-    rpc GetMoviesForUser(UserID) returns (stream Movie) {}
+    rpc GetUsers(uEmpty) returns (stream uUser) {}
+    rpc GetUserByID(uUserID) returns (uUser) {}
+    rpc AddUser(uProtoUser) returns (uResponse) {}
+    rpc GetBookingForUser(uUserID) returns (uBooking) {}
+    rpc GetMoviesForUser(uUserID) returns (stream uMovie) {}
 }
 
-message User {
+message uUser {
     string id = 1;
     string name = 2;
     int32 last_active = 3;
 }
 
-message ProtoUser {
+message uProtoUser {
     string id = 1;
     string name = 2;
 }
 
-message UserID {
+message uUserID {
     string id = 1;
 }
 
-message Booking {
+message uBooking {
     string userId = 1;
-    repeated Date dates = 2;
+    repeated uDate dates = 2;
 }
 
-message Date {
+message uDate {
     string date = 1;
     repeated string movies = 2;
 }
 
-message Movie {
+message uMovie {
     string title = 1;
     float rating = 2;
     string director = 3;
     string id = 4;
 }
 
-message Response {
+message uResponse {
     string message = 1;
 }
 
-message Empty {
+message uEmpty {
 }

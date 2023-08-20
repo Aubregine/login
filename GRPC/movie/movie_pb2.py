@@ -14,64 +14,64 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bmovie.proto\"D\n\x05Movie\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0e\n\x06rating\x18\x02 \x01(\x02\x12\x10\n\x08\x64irector\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\"\x15\n\x07MovieID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1b\n\nMovieTitle\x12\r\n\x05title\x18\x01 \x01(\t\"\x07\n\x05\x45mpty\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t2\xbe\x01\n\x06Movies\x12\x1f\n\tGetMovies\x12\x06.Empty\x1a\x06.Movie\"\x00\x30\x01\x12\"\n\x0cGetMovieByID\x12\x08.MovieID\x1a\x06.Movie\"\x00\x12(\n\x0fGetMovieByTitle\x12\x0b.MovieTitle\x1a\x06.Movie\"\x00\x12\x1f\n\x08\x41\x64\x64Movie\x12\x06.Movie\x1a\t.Response\"\x00\x12$\n\x0b\x44\x65leteMovie\x12\x08.MovieID\x1a\t.Response\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bmovie.proto\"E\n\x06mMovie\x12\r\n\x05title\x18\x01 \x01(\t\x12\x0e\n\x06rating\x18\x02 \x01(\x02\x12\x10\n\x08\x64irector\x18\x03 \x01(\t\x12\n\n\x02id\x18\x04 \x01(\t\"\x16\n\x08mMovieID\x12\n\n\x02id\x18\x01 \x01(\t\"\x1c\n\x0bmMovieTitle\x12\r\n\x05title\x18\x01 \x01(\t\"\x08\n\x06mEmpty\"\x1c\n\tmResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2\xc8\x01\n\x06Movies\x12!\n\tGetMovies\x12\x07.mEmpty\x1a\x07.mMovie\"\x00\x30\x01\x12$\n\x0cGetMovieByID\x12\t.mMovieID\x1a\x07.mMovie\"\x00\x12*\n\x0fGetMovieByTitle\x12\x0c.mMovieTitle\x1a\x07.mMovie\"\x00\x12!\n\x08\x41\x64\x64Movie\x12\x07.mMovie\x1a\n.mResponse\"\x00\x12&\n\x0b\x44\x65leteMovie\x12\t.mMovieID\x1a\n.mResponse\"\x00\x62\x06proto3')
 
 
 
-_MOVIE = DESCRIPTOR.message_types_by_name['Movie']
-_MOVIEID = DESCRIPTOR.message_types_by_name['MovieID']
-_MOVIETITLE = DESCRIPTOR.message_types_by_name['MovieTitle']
-_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
-_RESPONSE = DESCRIPTOR.message_types_by_name['Response']
-Movie = _reflection.GeneratedProtocolMessageType('Movie', (_message.Message,), {
-  'DESCRIPTOR' : _MOVIE,
+_MMOVIE = DESCRIPTOR.message_types_by_name['mMovie']
+_MMOVIEID = DESCRIPTOR.message_types_by_name['mMovieID']
+_MMOVIETITLE = DESCRIPTOR.message_types_by_name['mMovieTitle']
+_MEMPTY = DESCRIPTOR.message_types_by_name['mEmpty']
+_MRESPONSE = DESCRIPTOR.message_types_by_name['mResponse']
+mMovie = _reflection.GeneratedProtocolMessageType('mMovie', (_message.Message,), {
+  'DESCRIPTOR' : _MMOVIE,
   '__module__' : 'movie_pb2'
-  # @@protoc_insertion_point(class_scope:Movie)
+  # @@protoc_insertion_point(class_scope:mMovie)
   })
-_sym_db.RegisterMessage(Movie)
+_sym_db.RegisterMessage(mMovie)
 
-MovieID = _reflection.GeneratedProtocolMessageType('MovieID', (_message.Message,), {
-  'DESCRIPTOR' : _MOVIEID,
+mMovieID = _reflection.GeneratedProtocolMessageType('mMovieID', (_message.Message,), {
+  'DESCRIPTOR' : _MMOVIEID,
   '__module__' : 'movie_pb2'
-  # @@protoc_insertion_point(class_scope:MovieID)
+  # @@protoc_insertion_point(class_scope:mMovieID)
   })
-_sym_db.RegisterMessage(MovieID)
+_sym_db.RegisterMessage(mMovieID)
 
-MovieTitle = _reflection.GeneratedProtocolMessageType('MovieTitle', (_message.Message,), {
-  'DESCRIPTOR' : _MOVIETITLE,
+mMovieTitle = _reflection.GeneratedProtocolMessageType('mMovieTitle', (_message.Message,), {
+  'DESCRIPTOR' : _MMOVIETITLE,
   '__module__' : 'movie_pb2'
-  # @@protoc_insertion_point(class_scope:MovieTitle)
+  # @@protoc_insertion_point(class_scope:mMovieTitle)
   })
-_sym_db.RegisterMessage(MovieTitle)
+_sym_db.RegisterMessage(mMovieTitle)
 
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
+mEmpty = _reflection.GeneratedProtocolMessageType('mEmpty', (_message.Message,), {
+  'DESCRIPTOR' : _MEMPTY,
   '__module__' : 'movie_pb2'
-  # @@protoc_insertion_point(class_scope:Empty)
+  # @@protoc_insertion_point(class_scope:mEmpty)
   })
-_sym_db.RegisterMessage(Empty)
+_sym_db.RegisterMessage(mEmpty)
 
-Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
-  'DESCRIPTOR' : _RESPONSE,
+mResponse = _reflection.GeneratedProtocolMessageType('mResponse', (_message.Message,), {
+  'DESCRIPTOR' : _MRESPONSE,
   '__module__' : 'movie_pb2'
-  # @@protoc_insertion_point(class_scope:Response)
+  # @@protoc_insertion_point(class_scope:mResponse)
   })
-_sym_db.RegisterMessage(Response)
+_sym_db.RegisterMessage(mResponse)
 
 _MOVIES = DESCRIPTOR.services_by_name['Movies']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _MOVIE._serialized_start=15
-  _MOVIE._serialized_end=83
-  _MOVIEID._serialized_start=85
-  _MOVIEID._serialized_end=106
-  _MOVIETITLE._serialized_start=108
-  _MOVIETITLE._serialized_end=135
-  _EMPTY._serialized_start=137
-  _EMPTY._serialized_end=144
-  _RESPONSE._serialized_start=146
-  _RESPONSE._serialized_end=173
-  _MOVIES._serialized_start=176
-  _MOVIES._serialized_end=366
+  _MMOVIE._serialized_start=15
+  _MMOVIE._serialized_end=84
+  _MMOVIEID._serialized_start=86
+  _MMOVIEID._serialized_end=108
+  _MMOVIETITLE._serialized_start=110
+  _MMOVIETITLE._serialized_end=138
+  _MEMPTY._serialized_start=140
+  _MEMPTY._serialized_end=148
+  _MRESPONSE._serialized_start=150
+  _MRESPONSE._serialized_end=178
+  _MOVIES._serialized_start=181
+  _MOVIES._serialized_end=381
 # @@protoc_insertion_point(module_scope)
